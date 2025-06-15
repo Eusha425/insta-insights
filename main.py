@@ -1,4 +1,5 @@
 import json
+import matplotlib
 
 def find_followers():
     with open("followers_1.json") as follower_file:
