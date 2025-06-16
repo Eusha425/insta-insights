@@ -40,7 +40,7 @@ def visualisation(mutual, non_followers, unrequited_followers):
     print(count_non_follower)
     print(count_unrequited)
     """
-    label_list = ["mutual", "non-follower", "unrequited follower"]
+    label_list = ["Mutuals", "Not Followed Back", "Not Following"]
 
     plt.pie([count_mutal, count_non_follower, count_unrequited], labels=label_list)
     plt.legend()
@@ -80,3 +80,4 @@ print("\n🔁 Mutual Followers:")
 print(mutual)
 
 visualisation(mutual, non_followers, unrequited_followers)
+
