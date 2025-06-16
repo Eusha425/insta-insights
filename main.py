@@ -1,5 +1,5 @@
 import json
-import matplotlib
+import matplotlib.pyplot as plt
 
 def find_followers():
     with open("followers_1.json") as follower_file:
@@ -31,7 +31,18 @@ def find_following():
     #print(c)
     #print(following_name)
     return following_name
+
+def visualisation(mutual, non_follower, unrequited_followers):
+    count_mutal = len(mutual)
+    count_non_follower = len(non_followers)
+    count_unrequited = len(unrequited_followers)
+    """ print(count_mutal)
+    print(count_non_follower)
+    print(count_unrequited)
+    """
     
+    plt.pie([count_mutal, count_non_follower, count_unrequited])
+    plt.show()
 
 user_followers = find_followers()
 user_following = find_following()
@@ -65,3 +76,4 @@ print(unrequited_followers)
 
 print("\n🔁 Mutual Followers:")
 print(mutual)
+
