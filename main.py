@@ -32,7 +32,7 @@ def find_following():
     #print(following_name)
     return following_name
 
-def visualisation(mutual, non_follower, unrequited_followers):
+def visualisation(mutual, non_followers, unrequited_followers):
     count_mutal = len(mutual)
     count_non_follower = len(non_followers)
     count_unrequited = len(unrequited_followers)
@@ -40,8 +40,10 @@ def visualisation(mutual, non_follower, unrequited_followers):
     print(count_non_follower)
     print(count_unrequited)
     """
-    
-    plt.pie([count_mutal, count_non_follower, count_unrequited])
+    label_list = ["mutual", "non-follower", "unrequited follower"]
+
+    plt.pie([count_mutal, count_non_follower, count_unrequited], labels=label_list)
+    plt.legend()
     plt.show()
 
 user_followers = find_followers()
@@ -77,3 +79,4 @@ print(unrequited_followers)
 print("\n🔁 Mutual Followers:")
 print(mutual)
 
+visualisation(mutual, non_followers, unrequited_followers)
