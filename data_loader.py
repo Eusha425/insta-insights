@@ -32,8 +32,7 @@ def find_following():
     return following_name
 
 def main():
-    find_followers()
-    find_following()
+    print("This is the data loader module")
 
 if __name__ == "__main__":
     main()

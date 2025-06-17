@@ -21,15 +21,7 @@ def following_follower_analysis(user_following, user_followers):
             mutual.append(each_following)
 
     return non_followers, unrequited_followers, mutual
-    print("🔴 Not Following You Back:")
-    print(non_followers)
-
-    print("\n🟢 You Are Not Following Back:")
-    print(unrequited_followers)
-
-    print("\n🔁 Mutual Followers:")
-    print(mutual)
-
+    
 def main():
     print("This is the analyser module")
 
