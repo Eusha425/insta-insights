@@ -1,7 +1,7 @@
 import json
 
-def find_followers():
-    with open("followers_1.json") as follower_file:
+def find_followers(filename="followers_1.json"):
+    with open(filename) as follower_file:
         follower_data = json.load(follower_file)
 
     follower_name = []
@@ -15,8 +15,8 @@ def find_followers():
     return follower_name
 
 
-def find_following():
-    with open("following.json") as following_file:
+def find_following(filename="following.json"):
+    with open(filename) as following_file:
         following_data = json.load(following_file)
 
     following_data = following_data['relationships_following']

@@ -10,3 +10,24 @@ parser.add_argument('--visualise', action='store_true', help="Create visualisati
 parser.add_argument('--summarise', action="store_true", help="Summarise the data")
 parser.add_argument('--export', type=str, metavar="", default='.csv', help="Export the data")
 args = parser.parse_args()
+
+#dl.find_followers(args.followers)
+#dl.find_following(args.following)
+
+non_followers, unrequited_followers, mutual = anl.following_follower_analysis(dl.find_following(args.following), dl.find_followers(args.followers))
+
+if args.summarise:
+    print(f"Mutual: {len(mutual)}\nNot Following You Back: {len(non_followers)}\nYou Are Not Following Back: {len(unrequited_followers)}")
+
+else:
+
+    print("🔴 Not Following You Back:")
+    print(non_followers)
+
+    print("\n🟢 You Are Not Following Back:")
+    print(unrequited_followers)
+
+    print("\n🔁 Mutual Followers:")
+    print(mutual)
+
+
