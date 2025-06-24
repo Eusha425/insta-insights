@@ -3,6 +3,14 @@ import analyser as anl
 import visualiser as vl
 import argparse
 
+def show_summary(non_followers, unrequited_followers, mutual):
+    num_of_non_followers = len(non_followers)
+    num_of_unrequited = len(unrequited_followers)
+    num_of_mutual = len(mutual)
+
+    print(f"Mutual: {num_of_mutual}\nNot following you back: {num_of_non_followers}\nYou are not following back: {num_of_unrequited}")
+
+
 parser = argparse.ArgumentParser(description="Testing it right now")
 parser.add_argument('--followers', type=str, metavar="", default="followers_1.json", help="Path to the followers JSON file") # add the necessary parametres for adding the argument, metavar added to enhance the cli output
 parser.add_argument('--following', type=str, metavar="", default="following.json", help="Path to the following JSON file")
@@ -17,8 +25,8 @@ args = parser.parse_args()
 non_followers, unrequited_followers, mutual = anl.following_follower_analysis(dl.find_following(args.following), dl.find_followers(args.followers))
 
 if args.summarise:
-    print(f"Mutual: {len(mutual)}\nNot Following You Back: {len(non_followers)}\nYou Are Not Following Back: {len(unrequited_followers)}")
-
+    #print(f"Mutual: {len(mutual)}\nNot Following You Back: {len(non_followers)}\nYou Are Not Following Back: {len(unrequited_followers)}")
+    show_summary(non_followers, unrequited_followers, mutual)
 else:
 
     print("🔴 Not Following You Back:")
@@ -31,3 +39,5 @@ else:
     print(mutual)
 
 
+if args.visualise:
+    vl.visualisation(mutual, non_followers, unrequited_followers)
