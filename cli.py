@@ -14,14 +14,18 @@ def show_summary(non_followers, unrequited_followers, mutual):
 
 def write_to_text(data):
     #print(data)
-    file_writer = open("data.txt", 'w')
-    file_writer.write(str(data))
-    file_writer.close()
+    label = ['Mutual', 'Not following you back', 'You are not following back']
+    with open("data.txt", 'w') as file_writer:
+        for i in range(len(data)):
+            file_writer.write(f"{label[i]}: {data[i]}\n")
+    
 
 def write_to_csv(data):
-    print(data)
+    #print(data)
+    header = ['Mutual', 'Not following you back', 'You are not following back']
     with open("data.csv", "w", newline='', encoding='utf-8') as file_writer:
         writer = csv.writer(file_writer)
+        writer.writerow(header)
         writer.writerow(data)
 
     
@@ -57,9 +61,13 @@ else:
 if args.visualise:
     vl.visualisation(mutual, non_followers, unrequited_followers)
 
-if args.export == 'csv' or args.export == 'CSV':
-    print('csv file')
-    write_to_csv(show_summary(non_followers, unrequited_followers, mutual))
-elif args.export == 'txt' or args.export == 'TXT':
-    print('txt file')
-    write_to_text(show_summary(non_followers, unrequited_followers, mutual))
+if args.export == 'csv' or args.export == 'CSV' or args.export == 'txt' or args.export == 'TXT':
+
+    if args.export == 'csv' or args.export == 'CSV':
+        print('csv file')
+        write_to_csv(show_summary(non_followers, unrequited_followers, mutual))
+    elif args.export == 'txt' or args.export == 'TXT':
+        print('txt file')
+        write_to_text(show_summary(non_followers, unrequited_followers, mutual))
+else:
+    print(f"Unsupported export format: {args.export}")
