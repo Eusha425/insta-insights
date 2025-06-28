@@ -53,6 +53,8 @@ def write_full_data_to_csv(non_followers, unrequited_followers, mutual):
     rows = []
 
     for i in range(max_len):
+
+        # checking the index, If non_followers has an element at this index, use it
         if i < len(non_followers):
             nf = non_followers[i]
         else:
@@ -79,7 +81,7 @@ def write_full_data_to_csv(non_followers, unrequited_followers, mutual):
 
 
 
-parser = argparse.ArgumentParser(description="Testing it right now")
+parser = argparse.ArgumentParser(description="📈 Analyze Instagram followers and following data.",epilog="✨ Example: python cli.py --followers followers.json --following following.json")
 parser.add_argument('--followers', type=str, metavar="", default="followers_1.json", help="Path to the followers JSON file") # add the necessary parametres for adding the argument, metavar added to enhance the cli output
 parser.add_argument('--following', type=str, metavar="", default="following.json", help="Path to the following JSON file")
 parser.add_argument('--visualise', action='store_true', help="Create visualisation")
@@ -92,6 +94,7 @@ args = parser.parse_args()
 
 non_followers, unrequited_followers, mutual = anl.following_follower_analysis(dl.find_following(args.following), dl.find_followers(args.followers))
 
+#need to fix this 
 if args.summarise:
     #print(f"Mutual: {len(mutual)}\nNot Following You Back: {len(non_followers)}\nYou Are Not Following Back: {len(unrequited_followers)}")
     summarise_data(non_followers, unrequited_followers, mutual)
@@ -110,19 +113,20 @@ else:
 if args.visualise:
     vl.visualisation(mutual, non_followers, unrequited_followers)
 
-
-if args.export.lower() == 'csv':
-    if args.summarise:
-        write_summary_to_csv(summarise_data(non_followers, unrequited_followers, mutual))
+# defensive check to see if export called or not
+if args.export:
+    if args.export.lower() == 'csv':
+        if args.summarise:
+            write_summary_to_csv(summarise_data(non_followers, unrequited_followers, mutual))
+        else:
+            write_full_data_to_csv(non_followers, unrequited_followers, mutual)
+    elif args.export.lower() == 'txt':
+        if args.summarise:
+            write_summary_to_text(summarise_data(non_followers, unrequited_followers, mutual))
+        else:
+            write_full_data_to_text(non_followers, unrequited_followers, mutual)
     else:
-        write_full_data_to_csv(non_followers, unrequited_followers, mutual)
-elif args.export.lower() == 'txt':
-    if args.summarise:
-        write_summary_to_text(summarise_data(non_followers, unrequited_followers, mutual))
-    else:
-        write_full_data_to_text(non_followers, unrequited_followers, mutual)
-else:
-    print(f"Unsupported export format: {args.export}")
+        print(f"Unsupported export format: {args.export}")
 
 
 """ 
