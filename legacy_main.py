@@ -1,3 +1,6 @@
+# NOTE: This was the original version before CLI was introduced.
+# For the full-featured version, run: python cli.py --help
+
 import data_loader as dl
 import analyser as anl
 import visualiser as vl

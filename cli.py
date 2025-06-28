@@ -10,11 +10,13 @@ def print_summarise(data):
     num_of_unrequited = data[2]
     print(f"Mutual: {num_of_mutual}\nNot following you back: {num_of_non_followers}\nYou are not following back: {num_of_unrequited}")
 
+
 def summarise_data(non_followers, unrequited_followers, mutual):
     num_of_non_followers = len(non_followers)
     num_of_unrequited = len(unrequited_followers)
     num_of_mutual = len(mutual)
     return num_of_mutual, num_of_non_followers, num_of_unrequited # returning a tuple containing the numbers 
+
 
 def write_summary_to_text(data):
     #print(data)
@@ -50,6 +52,7 @@ def write_full_data_to_text(non_followers, unrequited_followers, mutual):
         for i in range(len(mutual)):
             file_writer.write(f"{mutual[i]}\n")
 
+
 def write_full_data_to_csv(non_followers, unrequited_followers, mutual):
     # define the header
     header = ["Not Following You Back", "You Are Not Following Back", "Mutual Followers"]
@@ -74,16 +77,20 @@ def write_full_data_to_csv(non_followers, unrequited_followers, mutual):
         row = [nf, ur, mt]
         rows.append(row)
 
-
-
     #zipped_rows = zip(header, non_followers, unrequited_followers, mutual)
     with open("data.csv", "w", newline='', encoding='utf-8') as file_writer:
         writer = csv.writer(file_writer)
         writer.writerow(header)
         writer.writerows(rows)
 
+def section_title(icon, title):
+    print(f"{icon}  {title} {icon}".center(50, "-"))
 
+def print_list(data_list):
 
+    for i in range(len(data_list)):
+        print(f"{i+1}. {data_list[i]}")
+    print() # for formatting
 
 parser = argparse.ArgumentParser(description="📈 Analyze Instagram followers and following data.",epilog="✨ Example: python cli.py --followers followers.json --following following.json")
 parser.add_argument('--followers', type=str, metavar="", default="followers_1.json", help="Path to the followers JSON file") # add the necessary parametres for adding the argument, metavar added to enhance the cli output
@@ -96,41 +103,51 @@ args = parser.parse_args()
 #dl.find_followers(args.followers)
 #dl.find_following(args.following)
 
-non_followers, unrequited_followers, mutual = anl.following_follower_analysis(dl.find_following(args.following), dl.find_followers(args.followers))
+try:
+    non_followers, unrequited_followers, mutual = anl.following_follower_analysis(dl.find_following(args.following), dl.find_followers(args.followers))
 
-#need to fix this 
-if args.summarise:
-    #print(f"Mutual: {len(mutual)}\nNot Following You Back: {len(non_followers)}\nYou Are Not Following Back: {len(unrequited_followers)}")
-    print_summarise(summarise_data(non_followers, unrequited_followers, mutual))
-else:
-    #temporary code need to change here
-    print("🔴 Not Following You Back:")
-    print(non_followers)
-
-    print("\n🟢 You Are Not Following Back:")
-    print(unrequited_followers)
-
-    print("\n🔁 Mutual Followers:")
-    print(mutual)
-
-
-if args.visualise:
-    vl.visualisation(mutual, non_followers, unrequited_followers)
-
-# defensive check to see if export called or not
-if args.export:
-    if args.export.lower() == 'csv':
-        if args.summarise:
-            write_summary_to_csv(summarise_data(non_followers, unrequited_followers, mutual))
-        else:
-            write_full_data_to_csv(non_followers, unrequited_followers, mutual)
-    elif args.export.lower() == 'txt':
-        if args.summarise:
-            write_summary_to_text(summarise_data(non_followers, unrequited_followers, mutual))
-        else:
-            write_full_data_to_text(non_followers, unrequited_followers, mutual)
+    # functions to do based on arguments passed 
+    if args.summarise:
+        #print(f"Mutual: {len(mutual)}\nNot Following You Back: {len(non_followers)}\nYou Are Not Following Back: {len(unrequited_followers)}")
+        print_summarise(summarise_data(non_followers, unrequited_followers, mutual))
     else:
-        print(f"Unsupported export format: {args.export}")
+        #temporary code need to change here
+        #print("🔴", "Not Following You Back:".center(40, "-"))
+        section_title("🔴", "Not Following You Back")
+        print_list(non_followers)
+
+        #print("\n🟢", "You Are Not Following Back:".center(40, "-"))
+        section_title("🟢","You Are Not Following Back")
+        print_list(unrequited_followers)
+
+        #print("\n🔁", "Mutual Followers:".center(40, "-"))
+        section_title("🔁","Mutual Followers")
+        print_list(mutual)
+
+
+
+    if args.visualise:
+        vl.visualisation(mutual, non_followers, unrequited_followers)
+
+    # defensive check to see if export called or not
+    if args.export:
+        if args.export.lower() == 'csv':
+            if args.summarise:
+                write_summary_to_csv(summarise_data(non_followers, unrequited_followers, mutual))
+            else:
+                write_full_data_to_csv(non_followers, unrequited_followers, mutual)
+        elif args.export.lower() == 'txt':
+            if args.summarise:
+                write_summary_to_text(summarise_data(non_followers, unrequited_followers, mutual))
+            else:
+                write_full_data_to_text(non_followers, unrequited_followers, mutual)
+        else:
+            print(f"Unsupported export format: {args.export}")
+
+except FileNotFoundError:
+    print("The file does not exist, please check again")
+
+
 
 
 """ 
