@@ -4,13 +4,17 @@ import visualiser as vl
 import argparse
 import csv
 
+def print_summarise(data):
+    num_of_mutual = data[0]
+    num_of_non_followers = data[1]
+    num_of_unrequited = data[2]
+    print(f"Mutual: {num_of_mutual}\nNot following you back: {num_of_non_followers}\nYou are not following back: {num_of_unrequited}")
+
 def summarise_data(non_followers, unrequited_followers, mutual):
     num_of_non_followers = len(non_followers)
     num_of_unrequited = len(unrequited_followers)
     num_of_mutual = len(mutual)
-
-    print(f"Mutual: {num_of_mutual}\nNot following you back: {num_of_non_followers}\nYou are not following back: {num_of_unrequited}")
-    return num_of_mutual, num_of_non_followers, num_of_unrequited
+    return num_of_mutual, num_of_non_followers, num_of_unrequited # returning a tuple containing the numbers 
 
 def write_summary_to_text(data):
     #print(data)
@@ -97,7 +101,7 @@ non_followers, unrequited_followers, mutual = anl.following_follower_analysis(dl
 #need to fix this 
 if args.summarise:
     #print(f"Mutual: {len(mutual)}\nNot Following You Back: {len(non_followers)}\nYou Are Not Following Back: {len(unrequited_followers)}")
-    summarise_data(non_followers, unrequited_followers, mutual)
+    print_summarise(summarise_data(non_followers, unrequited_followers, mutual))
 else:
     #temporary code need to change here
     print("🔴 Not Following You Back:")
