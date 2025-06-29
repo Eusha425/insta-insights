@@ -83,8 +83,10 @@ def write_full_data_to_csv(non_followers, unrequited_followers, mutual):
         writer.writerow(header)
         writer.writerows(rows)
 
+
 def section_title(icon, title):
     print(f"{icon}  {title} {icon}".center(50, "-"))
+
 
 def print_list(data_list):
 
@@ -92,12 +94,14 @@ def print_list(data_list):
         print(f"{i+1}. {data_list[i]}")
     print() # for formatting
 
+
 parser = argparse.ArgumentParser(description="📈 Analyze Instagram followers and following data.",epilog="✨ Example: python cli.py --followers followers.json --following following.json")
 parser.add_argument('--followers', type=str, metavar="", default="followers_1.json", help="Path to the followers JSON file") # add the necessary parametres for adding the argument, metavar added to enhance the cli output
 parser.add_argument('--following', type=str, metavar="", default="following.json", help="Path to the following JSON file")
 parser.add_argument('--visualise', action='store_true', help="Create visualisation")
 parser.add_argument('--summarise', action="store_true", help="Summarise the data")
 parser.add_argument('--export', type=str, metavar="", help="Export the data")
+parser.add_argument('--version', action='version', version='%(prog)s 1.0.0')
 args = parser.parse_args()
 
 #dl.find_followers(args.followers)
