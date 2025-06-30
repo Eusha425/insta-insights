@@ -1,8 +1,11 @@
 import json
 
-def find_followers(filename="followers_1.json"):
-    with open(filename) as follower_file:
-        follower_data = json.load(follower_file)
+def find_followers(file_or_path):
+    if isinstance(file_or_path, str): # to check the type of parametre passed, expect string when using CLI expect file object when running GUI
+        with open(file_or_path) as follower_file:
+            follower_data = json.load(follower_file)
+    else:
+        follower_data = json.load(file_or_path)
 
     follower_name = []
 
@@ -15,9 +18,14 @@ def find_followers(filename="followers_1.json"):
     return follower_name
 
 
-def find_following(filename="following.json"):
-    with open(filename) as following_file:
-        following_data = json.load(following_file)
+def find_following(file_or_path):
+    # to check the type of parametre passed, expect string when using CLI expect file object when running GUI
+    if isinstance(file_or_path, str):
+
+        with open(file_or_path) as following_file:
+            following_data = json.load(following_file)
+    else:
+        following_data = json.load(file_or_path)
 
     following_data = following_data['relationships_following']
     #print((following_data))
