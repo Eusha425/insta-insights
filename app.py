@@ -52,6 +52,24 @@ analyse_button = st.button("Analyse data")
 
 if analyse_button:
     if FOLLOWER_UPLOADED == True and FOLLOWING_UPLOADED == True:
-        non_followers, unrequited_followers, mutual = anl.following_follower_analysis(following, followers)
-        st.write("in condition")
+        with st.spinner("Analysing..."):
+            non_followers, unrequited_followers, mutual = anl.following_follower_analysis(following, followers)
+            st.write("in condition")
+
+            col1, col2 = st.columns(2)
+
+            with col1:
+                st.subheader("You are not followed back")
+                st.write("You are not following back")
+                st.write("Mutuals")
+
+            with col2:
+                st.write(non_followers)
+                st.write(f"total: {len(non_followers)}")
+                st.write(unrequited_followers)
+                st.write(f"total: {len(unrequited_followers)}")
+
+                st.write(mutual)
+                st.write(f"total: {len(mutual)}")
+
 
