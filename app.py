@@ -1,6 +1,8 @@
 import streamlit as st
 import data_loader as dl
 import analyser as anl
+import visualiser as vl
+
 #st.write("Hello world")
 FOLLOWING_UPLOADED = False
 FOLLOWER_UPLOADED = False
@@ -71,5 +73,7 @@ if analyse_button:
 
                 st.write(mutual)
                 st.write(f"total: {len(mutual)}")
-
+        fig = vl.visualisation(mutual,non_followers,unrequited_followers)
+        st.pyplot(fig)
+        #vl.visualisation(mutual,non_followers,unrequited_followers)
 
