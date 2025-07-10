@@ -77,6 +77,8 @@ try:
 
 except FileNotFoundError:
     print("The file does not exist, please check again")
+except:
+    print("Further operations could not be carried")
 
 
 

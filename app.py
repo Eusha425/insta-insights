@@ -24,18 +24,23 @@ if upload_file_followers:
         
     else:
         followers = dl.find_followers(upload_file_followers)
-        st.write(followers)
-        FOLLOWER_UPLOADED = True
+        if followers is None:
+            st.error("JSON file not properly formatted")
+        else: 
+            st.write(followers)
+            FOLLOWER_UPLOADED = True
 
 upload_file_following = st.file_uploader("Upload the following file: ")
 if upload_file_following:
     if '.json' not in upload_file_following.name:
         st.error("Please upload a JSON file")
-
     else:
         following = dl.find_following(upload_file_following)
-        st.write(following)
-        FOLLOWING_UPLOADED = True
+        if following is None:
+            st.error("JSON file not properly formatted")
+        else:
+            st.write(following)
+            FOLLOWING_UPLOADED = True
 
 # if upload_file_followers and upload_file_following:
 #     if '.json' not in upload_file_followers.name:
