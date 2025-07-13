@@ -2,6 +2,7 @@ import streamlit as st
 import data_loader as dl
 import analyser as anl
 import visualiser as vl
+import exporter as ex
 
 #st.write("Hello world")
 FOLLOWING_UPLOADED = False
@@ -61,7 +62,7 @@ if analyse_button:
     if FOLLOWER_UPLOADED == True and FOLLOWING_UPLOADED == True:
         with st.spinner("Analysing..."):
             non_followers, unrequited_followers, mutual = anl.following_follower_analysis(following, followers)
-            st.write("in condition")
+            #st.write("in condition")
 
             col1, col2 = st.columns(2)
 
@@ -81,4 +82,9 @@ if analyse_button:
         fig = vl.visualisation(mutual,non_followers,unrequited_followers)
         st.pyplot(fig)
         #vl.visualisation(mutual,non_followers,unrequited_followers)
+        #ex.streamlit_export(non_followers,unrequited_followers,mutual)
 
+
+    download_button = st.download_button(
+        label= "Download data", data=ex.streamlit_export(non_followers,unrequited_followers,mutual), 
+        file_name="data.csv", mime="text/csv", icon=":material/download:")
