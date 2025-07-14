@@ -8,6 +8,18 @@ import exporter as ex
 FOLLOWING_UPLOADED = False
 FOLLOWER_UPLOADED = False
 
+# session state to retain analysis results after script reruns 
+# (e.g., when the download button is clicked), so that the data 
+# and interface do not reset to their default state.
+if 'analyse_button_state' not in st.session_state:
+    st.session_state.analyse_button_state = False
+if 'non_follower_state' not in st.session_state:
+    st.session_state.non_follower_state = None
+if 'unrequited_followers_state' not in st.session_state:
+    st.session_state.unrequited_followers_state = None
+if 'mutual_state' not in st.session_state:
+    st.session_state.mutual_state = None
+
 # section for title and description phase 1
 st.title("📊 Instagram Follower Insights")
 st.write("Description here....")
@@ -63,28 +75,43 @@ if analyse_button:
         with st.spinner("Analysing..."):
             non_followers, unrequited_followers, mutual = anl.following_follower_analysis(following, followers)
             #st.write("in condition")
-
-            col1, col2 = st.columns(2)
-
-            with col1:
-                st.subheader("You are not followed back")
-                st.write("You are not following back")
-                st.write("Mutuals")
-
-            with col2:
-                st.write(non_followers)
-                st.write(f"total: {len(non_followers)}")
-                st.write(unrequited_followers)
-                st.write(f"total: {len(unrequited_followers)}")
-
-                st.write(mutual)
-                st.write(f"total: {len(mutual)}")
-        fig = vl.visualisation(mutual,non_followers,unrequited_followers)
-        st.pyplot(fig)
-        #vl.visualisation(mutual,non_followers,unrequited_followers)
-        #ex.streamlit_export(non_followers,unrequited_followers,mutual)
+            st.session_state.non_follower_state = non_followers
+            st.session_state.unrequited_followers_state = unrequited_followers
+            st.session_state.mutual_state = mutual
+            st.session_state.analyse_button_state = True
 
 
+
+if st.session_state.analyse_button_state and st.session_state.mutual_state is not None and st.session_state.unrequited_followers_state is not None and st.session_state.non_follower_state is not None:
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.subheader("You are not followed back")
+        st.write("You are not following back")
+        st.write("Mutuals")
+
+    with col2:
+        st.write(st.session_state.non_follower_state)
+        st.write(f"total: {len(st.session_state.non_follower_state)}")
+        st.write(st.session_state.unrequited_followers_state)
+        st.write(f"total: {len(st.session_state.unrequited_followers_state)}")
+
+        st.write(st.session_state.mutual_state)
+        st.write(f"total: {len(st.session_state.mutual_state)}")
+    fig = vl.visualisation(
+        st.session_state.mutual_state,
+        st.session_state.non_follower_state,
+        st.session_state.unrequited_followers_state
+    )
+    st.pyplot(fig)
+    #vl.visualisation(mutual,non_followers,unrequited_followers)
+    #ex.streamlit_export(non_followers,unrequited_followers,mutual)
+
+        
     download_button = st.download_button(
-        label= "Download data", data=ex.streamlit_export(non_followers,unrequited_followers,mutual), 
+        label= "Download data", data=ex.streamlit_export(
+            st.session_state.non_follower_state,
+            st.session_state.unrequited_followers_state,
+            st.session_state.mutual_state
+        ), 
         file_name="data.csv", mime="text/csv", icon=":material/download:")
