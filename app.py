@@ -4,7 +4,6 @@ import analyser as anl
 import visualiser as vl
 import exporter as ex
 
-#st.write("Hello world")
 FOLLOWING_UPLOADED = False
 FOLLOWER_UPLOADED = False
 
@@ -26,14 +25,11 @@ st.write("Description here....")
 
 # upload the files
 upload_file_followers = st.file_uploader("Upload the followers file: ")
-#print(upload_file_followers)
+
 if upload_file_followers:
     if '.json' not in upload_file_followers.name:
-        #st.write("invalid file type")
         st.error("Please upload a JSON file")
-        # data = pd.read_json(upload_file_followers)
-        # print(data)
-        # st.write(data)
+        
         
     else:
         followers = dl.find_followers(upload_file_followers)
@@ -55,18 +51,6 @@ if upload_file_following:
             st.write(following)
             FOLLOWING_UPLOADED = True
 
-# if upload_file_followers and upload_file_following:
-#     if '.json' not in upload_file_followers.name:
-#         st.error("Please upload a JSON file")
-#     elif '.json' not in upload_file_following.name:
-#         st.error("Please upload a JSON file")
-#     else:
-#         followers = dl.find_followers(upload_file_followers)
-#         st.write(followers)
-#         following = dl.find_following(upload_file_following)
-#         st.write(following)
-
-#         non_followers, unrequited_followers, mutual = anl.following_follower_analysis(following, followers)
 
 analyse_button = st.button("Analyse data")
 
@@ -74,7 +58,6 @@ if analyse_button:
     if FOLLOWER_UPLOADED == True and FOLLOWING_UPLOADED == True:
         with st.spinner("Analysing..."):
             non_followers, unrequited_followers, mutual = anl.following_follower_analysis(following, followers)
-            #st.write("in condition")
             st.session_state.non_follower_state = non_followers
             st.session_state.unrequited_followers_state = unrequited_followers
             st.session_state.mutual_state = mutual
@@ -104,8 +87,6 @@ if st.session_state.analyse_button_state and st.session_state.mutual_state is no
         st.session_state.unrequited_followers_state
     )
     st.pyplot(fig)
-    #vl.visualisation(mutual,non_followers,unrequited_followers)
-    #ex.streamlit_export(non_followers,unrequited_followers,mutual)
 
     download_option = st.selectbox("Select download format", ("CSV", "Text"), index=None)
 

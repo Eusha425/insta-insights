@@ -31,27 +31,20 @@ parser.add_argument('--export', type=str, metavar="", help="Export the data")
 parser.add_argument('--version', action='version', version='%(prog)s 1.0.0')
 args = parser.parse_args()
 
-#dl.find_followers(args.followers)
-#dl.find_following(args.following)
 
 try:
     non_followers, unrequited_followers, mutual = anl.following_follower_analysis(dl.find_following(args.following), dl.find_followers(args.followers))
 
     # functions to do based on arguments passed 
     if args.summarise:
-        #print(f"Mutual: {len(mutual)}\nNot Following You Back: {len(non_followers)}\nYou Are Not Following Back: {len(unrequited_followers)}")
         print_summarise(ex.summarise_data(non_followers, unrequited_followers, mutual))
     else:
-        #temporary code need to change here
-        #print("🔴", "Not Following You Back:".center(40, "-"))
         section_title("🔴", "Not Following You Back")
         print_list(non_followers)
 
-        #print("\n🟢", "You Are Not Following Back:".center(40, "-"))
         section_title("🟢","You Are Not Following Back")
         print_list(unrequited_followers)
 
-        #print("\n🔁", "Mutual Followers:".center(40, "-"))
         section_title("🔁","Mutual Followers")
         print_list(mutual)
 
@@ -79,21 +72,3 @@ except FileNotFoundError:
     print("The file does not exist, please check again")
 except:
     print("Further operations could not be carried")
-
-
-
-
-""" 
-if args.export == 'csv' or args.export == 'CSV' or args.export == 'txt' or args.export == 'TXT':
-
-    if args.export == 'csv' or args.export == 'CSV':
-        print('csv file')
-        #write_summary_to_csv(summarise_data(non_followers, unrequited_followers, mutual))
-        write_full_data_to_csv(non_followers, unrequited_followers, mutual)
-
-    elif args.export == 'txt' or args.export == 'TXT':
-        print('txt file')
-        #write_summary_to_text(summarise_data(non_followers, unrequited_followers, mutual))
-        write_full_data_to_text(non_followers, unrequited_followers, mutual)
-else:
-    print(f"Unsupported export format: {args.export}") """

@@ -53,7 +53,6 @@ def streamlit_export_csv(non_followers, unrequited_followers, mutual):
 
     output = buffer.getvalue()
     buffer.close()
-    #print(output)
     return output
 
 
@@ -76,7 +75,6 @@ def summarise_data(non_followers, unrequited_followers, mutual):
 
 
 def write_summary_to_text(data):
-    #print(data)
     label = ['Mutual', 'Not following you back', 'You are not following back']
     with open("data.txt", 'w') as file_writer:
         for i in range(len(data)):
@@ -84,7 +82,6 @@ def write_summary_to_text(data):
 
 
 def write_summary_to_csv(data):
-    #print(data)
     header = ['Mutual', 'Not following you back', 'You are not following back']
     with open("data.csv", "w", newline='', encoding='utf-8') as file_writer:
         writer = csv.writer(file_writer)
@@ -134,7 +131,6 @@ def write_full_data_to_csv(non_followers, unrequited_followers, mutual):
         row = [nf, ur, mt]
         rows.append(row)
 
-    #zipped_rows = zip(header, non_followers, unrequited_followers, mutual)
     with open("data.csv", "w", newline='', encoding='utf-8') as file_writer:
         writer = csv.writer(file_writer)
         writer.writerow(header)

@@ -11,16 +11,13 @@ def find_followers(file_or_path):
 
         follower_name = []
 
-        #print(len(follower_data))
         for each_row in follower_data:
             each_name = each_row['string_list_data'][0]['value']
-            #print(each_name)
             follower_name.append(each_name)
 
         return follower_name
     except:
-        print("Invalid JSON file format")
-
+        return None
 
 
 def find_following(file_or_path):
@@ -35,18 +32,15 @@ def find_following(file_or_path):
             following_data = json.load(file_or_path)
 
         following_data = following_data['relationships_following']
-        #print((following_data))
-        c = 0
         following_name = list()
+
         for i in range( len(following_data)):
-            #print(following_data[i]['string_list_data'][0]['value'])
             following_name.append(following_data[i]['string_list_data'][0]['value'])
 
-        #print(c)
-        #print(following_name)
         return following_name
     except:
-        print("Invalid JSON file format")
+        return None
+
 
 def main():
     print("This is the data loader module")
