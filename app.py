@@ -107,11 +107,21 @@ if st.session_state.analyse_button_state and st.session_state.mutual_state is no
     #vl.visualisation(mutual,non_followers,unrequited_followers)
     #ex.streamlit_export(non_followers,unrequited_followers,mutual)
 
-        
-    download_button = st.download_button(
-        label= "Download data", data=ex.streamlit_export(
-            st.session_state.non_follower_state,
-            st.session_state.unrequited_followers_state,
-            st.session_state.mutual_state
-        ), 
-        file_name="data.csv", mime="text/csv", icon=":material/download:")
+    download_option = st.selectbox("Select download format", ("CSV", "Text"), index=None)
+
+    if download_option == "CSV":        
+        download_button = st.download_button(
+            label= "Download data", data=ex.streamlit_export_csv(
+                st.session_state.non_follower_state,
+                st.session_state.unrequited_followers_state,
+                st.session_state.mutual_state
+            ), 
+            file_name="data.csv", mime="text/csv", icon=":material/download:")
+    elif download_option == "Text":
+        download_button = st.download_button(
+            label= "Download data", data=ex.streamlit_export_txt(
+                st.session_state.non_follower_state,
+                st.session_state.unrequited_followers_state,
+                st.session_state.mutual_state
+            ), 
+            file_name="data.txt", mime="text/plain", icon=":material/download:")

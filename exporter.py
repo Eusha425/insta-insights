@@ -1,7 +1,28 @@
 import csv
 import io
 
-def streamlit_export(non_followers, unrequited_followers, mutual):
+def streamlit_export_txt(non_followers, unrequited_followers, mutual):
+
+    buffer = io.StringIO()
+    buffer.write("Not Following You Back:\n")
+    for i in range(len(non_followers)):
+            buffer.write(f"{non_followers[i]}\n")
+    buffer.write('\n') # extra line for better formatting 
+
+    buffer.write("You Are Not Following Back:\n")
+    for i in range(len(unrequited_followers)):
+        buffer.write(f"{unrequited_followers[i]}\n")
+    buffer.write('\n') # extra line for better formatting 
+
+    buffer.write("Mutual Followers:\n")
+    for i in range(len(mutual)):
+        buffer.write(f"{mutual[i]}\n")
+
+    output = buffer.getvalue()
+    buffer.close()
+    return output
+
+def streamlit_export_csv(non_followers, unrequited_followers, mutual):
 
     header = ["Not Following You Back", "You Are Not Following Back", "Mutual Followers"]
     max_len = max(len(non_followers), len(unrequited_followers), len(mutual))
