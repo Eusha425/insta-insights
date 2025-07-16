@@ -22,16 +22,16 @@ if 'mutual_state' not in st.session_state:
 # section for title and description phase 1
 st.title("📊 Instagram Follower Insights")
 st.markdown("""
-Welcome to **Instagram Follower Insights**! 📊  
-Upload your exported Instagram **followers** and **following** JSON files to:
+Easily analyse your Instagram connections by uploading your exported **followers** and **following** data.
 
-- 🔍 Find out who isn’t following you back
-- 🧭 See who you don’t follow back
-- 🤝 Explore mutual connections
-- 📈 Visualise your relationship stats
-- 💾 Download results as CSV or TXT
+Discover:
+- 🔍 Who doesn't follow you back
+- 🧭 Who you're not following back
+- 🤝 Your mutual followers
+- 📈 Visual summaries of your network
+- 💾 Export your results as CSV or TXT
 
-> All processing is done locally and privately.
+> All processing happens locally - your data stays private.
 """)
 
 
@@ -48,7 +48,8 @@ if upload_file_followers:
         if followers is None:
             st.error("❌ Could not read followers. Make sure the file is the correct Instagram export (usually named 'followers_1.json').")
         else: 
-            st.write(followers)
+            #st.write(followers)
+            st.success("✅ Followers file loaded successfully.")
             FOLLOWER_UPLOADED = True
 
 upload_file_following = st.file_uploader("Upload the following file: ")
@@ -60,9 +61,12 @@ if upload_file_following:
         if following is None:
             st.error("❌ Could not read following data. Make sure the file is the correct Instagram export (usually named 'following.json').")
         else:
-            st.write(following)
+            #st.write(following)
+            st.success("✅ Following file loaded successfully.")
             FOLLOWING_UPLOADED = True
 
+st.sidebar.markdown("### 📱 Follower Insights")
+st.sidebar.info("Built with ❤️ using Streamlit.\n\nCreated by Eusha.")
 
 analyse_button = st.button("Analyse data")
 
@@ -78,28 +82,47 @@ if analyse_button:
 
 
 if st.session_state.analyse_button_state and st.session_state.mutual_state is not None and st.session_state.unrequited_followers_state is not None and st.session_state.non_follower_state is not None:
-    col1, col2 = st.columns(2)
+    
+    st.subheader("🔴 Not Following You Back")
+    st.write(st.session_state.non_follower_state)
+    st.caption(f"Total: {len(st.session_state.non_follower_state)}")
 
-    with col1:
-        st.subheader("You are not followed back")
-        st.write("You are not following back")
-        st.write("Mutuals")
+    st.subheader("🟢 You Are Not Following Back")
+    st.write(st.session_state.unrequited_followers_state)
+    st.caption(f"Total: {len(st.session_state.unrequited_followers_state)}")
 
-    with col2:
-        st.write(st.session_state.non_follower_state)
-        st.write(f"total: {len(st.session_state.non_follower_state)}")
-        st.write(st.session_state.unrequited_followers_state)
-        st.write(f"total: {len(st.session_state.unrequited_followers_state)}")
+    st.subheader("🔁 Mutual Followers")
+    st.write(st.session_state.mutual_state)
+    st.caption(f"Total: {len(st.session_state.mutual_state)}")
 
-        st.write(st.session_state.mutual_state)
-        st.write(f"total: {len(st.session_state.mutual_state)}")
+    
+    # col1, col2 = st.columns(2)
+
+    # with col1:
+    #     st.subheader("You are not followed back")
+    #     st.write("You are not following back")
+    #     st.write("Mutuals")
+
+    # with col2:
+    #     st.write(st.session_state.non_follower_state)
+    #     st.write(f"total: {len(st.session_state.non_follower_state)}")
+    #     st.write(st.session_state.unrequited_followers_state)
+    #     st.write(f"total: {len(st.session_state.unrequited_followers_state)}")
+
+    #     st.write(st.session_state.mutual_state)
+    #     st.write(f"total: {len(st.session_state.mutual_state)}")
+    
+    
+    
     fig = vl.visualisation(
         st.session_state.mutual_state,
         st.session_state.non_follower_state,
         st.session_state.unrequited_followers_state
     )
+    st.subheader("📊 Visual Summary")
     st.pyplot(fig)
 
+    st.subheader("💾 Export Your Data")
     download_option = st.selectbox("Select download format", ("CSV", "Text"), index=None)
 
     if download_option == "CSV":        
