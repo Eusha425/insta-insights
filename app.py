@@ -3,6 +3,7 @@ import data_loader as dl
 import analyser as anl
 import visualiser as vl
 import exporter as ex
+import snapshot_manager as sm
 
 FOLLOWING_UPLOADED = False
 FOLLOWER_UPLOADED = False
@@ -141,3 +142,8 @@ if st.session_state.analyse_button_state and st.session_state.mutual_state is no
                 st.session_state.mutual_state
             ), 
             file_name="data.txt", mime="text/plain", icon=":material/download:")
+        
+    snapshot = st.button("Save snapshot")
+    if snapshot:
+        if sm.save_snapshot(followers, following):
+            st.success("Snapshot saved")
