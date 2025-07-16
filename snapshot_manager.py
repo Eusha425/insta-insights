@@ -20,6 +20,7 @@ def save_snapshot(followers, following):
         'following': user_following 
     }
 
+    # create a path object for the file directory
     file_path = Path(f"snapshot/snapshot_{current_date}.json")
     # Ensure the parent directory exists
     file_path.parent.mkdir(parents=True, exist_ok=True)
