@@ -147,3 +147,5 @@ if st.session_state.analyse_button_state and st.session_state.mutual_state is no
     if snapshot:
         if sm.save_snapshot(followers, following):
             st.success("Snapshot saved")
+        else:
+            st.error("Unable to save snapshot, try again later")
