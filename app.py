@@ -21,7 +21,19 @@ if 'mutual_state' not in st.session_state:
 
 # section for title and description phase 1
 st.title("📊 Instagram Follower Insights")
-st.write("Description here....")
+st.markdown("""
+Welcome to **Instagram Follower Insights**! 📊  
+Upload your exported Instagram **followers** and **following** JSON files to:
+
+- 🔍 Find out who isn’t following you back
+- 🧭 See who you don’t follow back
+- 🤝 Explore mutual connections
+- 📈 Visualise your relationship stats
+- 💾 Download results as CSV or TXT
+
+> All processing is done locally and privately.
+""")
+
 
 # upload the files
 upload_file_followers = st.file_uploader("Upload the followers file: ")
@@ -34,7 +46,7 @@ if upload_file_followers:
     else:
         followers = dl.find_followers(upload_file_followers)
         if followers is None:
-            st.error("JSON file not properly formatted")
+            st.error("❌ Could not read followers. Make sure the file is the correct Instagram export (usually named 'followers_1.json').")
         else: 
             st.write(followers)
             FOLLOWER_UPLOADED = True
@@ -46,7 +58,7 @@ if upload_file_following:
     else:
         following = dl.find_following(upload_file_following)
         if following is None:
-            st.error("JSON file not properly formatted")
+            st.error("❌ Could not read following data. Make sure the file is the correct Instagram export (usually named 'following.json').")
         else:
             st.write(following)
             FOLLOWING_UPLOADED = True

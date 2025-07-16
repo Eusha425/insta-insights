@@ -17,6 +17,7 @@ def find_followers(file_or_path):
 
         return follower_name
     except:
+        print("Invalid JSON file format. Make sure the file is the correct Instagram export (usually named 'followers_1.json')")
         return None
 
 
@@ -39,6 +40,7 @@ def find_following(file_or_path):
 
         return following_name
     except:
+        print("Invalid JSON file format. Make sure the file is the correct Instagram export (usually named 'following.json')")
         return None
 
 
