@@ -143,7 +143,7 @@ if st.session_state.analyse_button_state and st.session_state.mutual_state is no
             ), 
             file_name="data.txt", mime="text/plain", icon=":material/download:")
         
-    snapshot = st.button("Save a snapshot")
+    snapshot = st.button("Save this as snapshot")
     if snapshot:
         if sm.save_snapshot(followers, following):
             st.success("Snapshot saved")
