@@ -149,3 +149,5 @@ if st.session_state.analyse_button_state and st.session_state.mutual_state is no
             st.success("Snapshot saved")
         else:
             st.error("Unable to save snapshot, try again later")
+
+    snapshot_option = st.selectbox("Select snapshot", options=sm.list_snapshots(), index=None)

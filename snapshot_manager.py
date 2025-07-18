@@ -1,7 +1,7 @@
 import datetime
 import json
 from pathlib import Path
-
+import os
 
 def save_snapshot(followers, following):
     user_followers = followers #dl.find_followers('followers_1.json')
@@ -30,8 +30,34 @@ def save_snapshot(followers, following):
     return True
 
 
+def list_snapshots():
+    try:
+        path = 'snapshot/'
+        files_in_the_path = os.listdir(path)
+        return files_in_the_path
+    except:
+        return None
+
+def load_follower_from_snapshot(snapshot_name):
+    snapshot_name = 'snapshot/' + snapshot_name
+    with open(snapshot_name, 'r') as file_reader:
+        data = json.load(file_reader)
+    followers = data['followers']
+    print(followers)
+
+def load_following_from_snapshot(snapshot_name):
+    snapshot_name = 'snapshot/' + snapshot_name
+    with open(snapshot_name, 'r') as file_reader:
+        data = json.load(file_reader)
+    following = data['following']
+    print(following)
+
 def main():
     print("This is the snapshot manager module")
+    #list_snapshots()
+    #load_follower_from_snapshot('snapshot_2025-07-18.json')
+    #load_following_from_snapshot('snapshot_2025-07-18.json')
+
 
 
 if __name__ == "__main__":
