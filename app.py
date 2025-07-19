@@ -150,4 +150,21 @@ if st.session_state.analyse_button_state and st.session_state.mutual_state is no
         else:
             st.error("Unable to save snapshot, try again later")
 
-    snapshot_option = st.selectbox("Select snapshot", options=sm.list_snapshots(), index=None)
+    snapshot_option_name = st.selectbox("Select snapshot", options=sm.list_snapshots(), index=None)
+    #st.write(snapshot_option_name)
+    snapshot_follower = sm.load_follower_from_snapshot(snapshot_option_name)
+    #st.write(snapshot_follower)
+    snapshot_following = sm.load_following_from_snapshot(snapshot_option_name)
+
+    snapshot_data = anl.following_follower_analysis(snapshot_following, snapshot_follower)
+    st.write(snapshot_data)
+
+    current_data = tuple()
+    
+    current_data = current_data + (st.session_state.non_follower_state,)
+    current_data = current_data + (st.session_state.unrequited_followers_state,)
+    current_data = current_data + (st.session_state.mutual_state,)
+    
+    st.write(current_data)
+
+    comparison_data = sm.compare_data(current_data, snapshot_data)

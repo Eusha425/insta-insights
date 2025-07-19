@@ -39,18 +39,60 @@ def list_snapshots():
         return None
 
 def load_follower_from_snapshot(snapshot_name):
-    snapshot_name = 'snapshot/' + snapshot_name
-    with open(snapshot_name, 'r') as file_reader:
-        data = json.load(file_reader)
-    followers = data['followers']
-    print(followers)
+    try:
+        snapshot_name = 'snapshot/' + snapshot_name
+        with open(snapshot_name, 'r') as file_reader:
+            data = json.load(file_reader)
+        followers = data['followers']
+        #print(followers)
+        return followers
+    except:
+        return None
 
 def load_following_from_snapshot(snapshot_name):
-    snapshot_name = 'snapshot/' + snapshot_name
-    with open(snapshot_name, 'r') as file_reader:
-        data = json.load(file_reader)
-    following = data['following']
-    print(following)
+    try:
+        snapshot_name = 'snapshot/' + snapshot_name
+        with open(snapshot_name, 'r') as file_reader:
+            data = json.load(file_reader)
+        following = data['following']
+        #print(following)
+        return following
+    except:
+        return None
+
+def compare_data(current_tuple, snapshot_tuple):
+
+    current_non_followers = current_tuple[0]
+    snapshot_non_followers = snapshot_tuple[0]
+
+    difference_in_non_followers = list(set(current_non_followers) - set(snapshot_non_followers))
+
+    result = tuple()
+    result = result + (difference_in_non_followers,)
+    
+    current_unrequited = current_tuple[1]
+    snapshot_unrequited = snapshot_tuple[1]
+
+    difference_in_unrequited = list(set(current_unrequited) - set(snapshot_unrequited))
+    result = result + (difference_in_unrequited,)
+
+    current_mutual = current_tuple[2]
+    snapshot_mutual = snapshot_tuple[2]
+
+    difference_in_mutual = list(set(current_mutual) - set(snapshot_mutual))
+    result = result + (difference_in_mutual,)
+
+    return result
+
+
+def compare_followers(current_followers, snapshot_followers):
+
+    difference_in_followers = list(set(current_followers) - set(snapshot_followers))
+
+    if len(difference_in_followers) == 0:
+        return None
+    else:
+        return difference_in_followers
 
 def main():
     print("This is the snapshot manager module")
