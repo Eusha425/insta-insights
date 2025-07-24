@@ -84,6 +84,48 @@ def compare_data(current_tuple, snapshot_tuple):
 
     return result
 
+def get_mutual_analysis(current_mutual, snapshot_data):
+    snapshot_mutual = snapshot_data[2]
+
+    mutual_gain = list()
+
+    for i in range(len(current_mutual)):
+        if current_mutual[i] not in snapshot_mutual:
+            mutual_gain.append(current_mutual[i])
+    
+    mutual_loss = list()
+    for i in range(len(snapshot_mutual)):
+        if snapshot_mutual[i] not in current_mutual:
+            mutual_loss.append(snapshot_mutual[i])
+
+    result = tuple()
+    result = result + (mutual_gain,)
+    result = result + (mutual_loss,)
+
+    return result
+
+def get_followers_gain(current_followers, snapshot_followers):
+    try:
+        gain_followers = list()
+        print(snapshot_followers)
+        for i in range(len(current_followers)):
+            if current_followers[i] not in snapshot_followers:
+                gain_followers.append(current_followers[i])
+        
+        return gain_followers
+    except:
+        return None
+
+def get_followers_lost(current_follower, snapshot_follower):
+    try:
+        lost_followers = list()
+
+        for i in range(len(snapshot_follower)):
+            if snapshot_follower[i] not in current_follower:
+                lost_followers.append(snapshot_follower[i])
+        return lost_followers
+    except:
+        return None
 
 def compare_followers(current_followers, snapshot_followers):
 

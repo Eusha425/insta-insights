@@ -165,6 +165,15 @@ if st.session_state.analyse_button_state and st.session_state.mutual_state is no
     current_data = current_data + (st.session_state.unrequited_followers_state,)
     current_data = current_data + (st.session_state.mutual_state,)
     
-    st.write(current_data)
+    #st.write(current_data)
 
-    comparison_data = sm.compare_data(current_data, snapshot_data)
+    #comparison_data = sm.compare_data(current_data, snapshot_data)
+    followers_lost = sm.get_followers_lost(followers, snapshot_follower)
+    if followers_lost is not None:
+        st.subheader("Followers lost")
+        st.write(followers_lost)
+   
+    followers_gained = sm.get_followers_gain(followers, snapshot_follower)
+    if followers_gained is not None:
+        st.subheader("Followers gained")
+        st.write(followers_gained)
