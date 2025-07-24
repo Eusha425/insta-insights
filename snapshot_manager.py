@@ -87,7 +87,6 @@ def get_mutual_analysis(current_mutual, snapshot_data):
 def get_followers_gain(current_followers, snapshot_followers):
     try:
         gain_followers = list()
-        print(snapshot_followers)
         for i in range(len(current_followers)):
             if current_followers[i] not in snapshot_followers:
                 gain_followers.append(current_followers[i])

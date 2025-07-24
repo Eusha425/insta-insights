@@ -177,3 +177,5 @@ if st.session_state.analyse_button_state and st.session_state.mutual_state is no
 
         st.write("Mutual loss")
         st.write(mutual_info[1])
+
+        st.write(f"Net Change: +{len(followers_gained)} new followers -{len(followers_lost)} unfollowers -> net {len(followers_gained) - len(followers_lost)}")
