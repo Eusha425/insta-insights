@@ -157,23 +157,23 @@ if st.session_state.analyse_button_state and st.session_state.mutual_state is no
     snapshot_following = sm.load_following_from_snapshot(snapshot_option_name)
 
     snapshot_data = anl.following_follower_analysis(snapshot_following, snapshot_follower)
-    st.write(snapshot_data)
-
-    current_data = tuple()
     
-    current_data = current_data + (st.session_state.non_follower_state,)
-    current_data = current_data + (st.session_state.unrequited_followers_state,)
-    current_data = current_data + (st.session_state.mutual_state,)
+    if snapshot_data is not None:
     
-    #st.write(current_data)
+        followers_lost = sm.get_followers_lost(followers, snapshot_follower)
+        if followers_lost is not None:
+            st.subheader("Followers lost")
+            st.write(followers_lost)
+    
+        followers_gained = sm.get_followers_gain(followers, snapshot_follower)
+        if followers_gained is not None:
+            st.subheader("Followers gained")
+            st.write(followers_gained)
 
-    #comparison_data = sm.compare_data(current_data, snapshot_data)
-    followers_lost = sm.get_followers_lost(followers, snapshot_follower)
-    if followers_lost is not None:
-        st.subheader("Followers lost")
-        st.write(followers_lost)
-   
-    followers_gained = sm.get_followers_gain(followers, snapshot_follower)
-    if followers_gained is not None:
-        st.subheader("Followers gained")
-        st.write(followers_gained)
+        mutual_info = sm.get_mutual_analysis(st.session_state.mutual_state, snapshot_data)
+
+        st.write("Mutual gain")
+        st.write(mutual_info[0])
+
+        st.write("Mutual loss")
+        st.write(mutual_info[1])
