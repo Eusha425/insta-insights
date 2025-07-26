@@ -85,15 +85,15 @@ if analyse_button:
 if st.session_state.analyse_button_state and st.session_state.mutual_state is not None and st.session_state.unrequited_followers_state is not None and st.session_state.non_follower_state is not None:
     
     st.subheader("🔴 Not Following You Back")
-    st.write(st.session_state.non_follower_state)
+    st.table(st.session_state.non_follower_state)
     st.caption(f"Total: {len(st.session_state.non_follower_state)}")
 
     st.subheader("🟢 You Are Not Following Back")
-    st.write(st.session_state.unrequited_followers_state)
+    st.table(st.session_state.unrequited_followers_state)
     st.caption(f"Total: {len(st.session_state.unrequited_followers_state)}")
 
     st.subheader("🔁 Mutual Followers")
-    st.write(st.session_state.mutual_state)
+    st.table(st.session_state.mutual_state)
     st.caption(f"Total: {len(st.session_state.mutual_state)}")
 
     
@@ -163,19 +163,32 @@ if st.session_state.analyse_button_state and st.session_state.mutual_state is no
         followers_lost = sm.get_followers_lost(followers, snapshot_follower)
         if followers_lost is not None:
             st.subheader("Followers lost")
-            st.write(followers_lost)
+            st.table(followers_lost)
     
         followers_gained = sm.get_followers_gain(followers, snapshot_follower)
         if followers_gained is not None:
             st.subheader("Followers gained")
-            st.write(followers_gained)
+            st.table(followers_gained)
 
         mutual_info = sm.get_mutual_analysis(st.session_state.mutual_state, snapshot_data)
 
         st.write("Mutual gain")
-        st.write(mutual_info[0])
+        st.table(mutual_info[0])
 
         st.write("Mutual loss")
-        st.write(mutual_info[1])
+        st.table(mutual_info[1])
 
+        col1, col2, col3, col4 = st.columns(4)
+        col1.metric("New Followers", len(followers_gained), delta=len(followers_gained))
+        col2.metric("Unfollowers", len(followers_lost), delta=-len(followers_lost))
+        col3.metric("Mutuals Gained", len(mutual_info[0]))
+        col4.metric("Mutuals Lost", len(mutual_info[1]))
         st.write(f"Net Change: +{len(followers_gained)} new followers -{len(followers_lost)} unfollowers -> net {len(followers_gained) - len(followers_lost)}")
+        
+        st.markdown("### Summary Insights")
+        if len(followers_gained) > len(followers_lost):
+            st.success("You're gaining more followers than you're losing! 📈")
+        elif len(followers_gained) < len(followers_lost):
+            st.warning("You lost more followers than you gained. Consider reviewing your content strategy. 😕")
+        else:
+            st.info("Your follower count is stable.")
