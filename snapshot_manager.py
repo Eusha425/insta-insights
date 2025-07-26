@@ -4,15 +4,10 @@ from pathlib import Path
 import os
 
 def save_snapshot(followers, following):
-    user_followers = followers #dl.find_followers('followers_1.json')
-    user_following = following #dl.find_following('following.json')
-
-    #print(user_followers)
-
-    #print(user_following)
+    user_followers = followers 
+    user_following = following 
 
     current_date = str(datetime.date.today())
-    #print(current_date)
     data_dictionary = {
         'date': current_date,
         'followers': user_followers,
@@ -45,7 +40,6 @@ def load_follower_from_snapshot(snapshot_name):
         with open(snapshot_name, 'r') as file_reader:
             data = json.load(file_reader)
         followers = data['followers']
-        #print(followers)
         return followers
     except:
         return None
@@ -57,7 +51,6 @@ def load_following_from_snapshot(snapshot_name):
         with open(snapshot_name, 'r') as file_reader:
             data = json.load(file_reader)
         following = data['following']
-        #print(following)
         return following
     except:
         return None

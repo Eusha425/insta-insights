@@ -20,7 +20,7 @@ if 'unrequited_followers_state' not in st.session_state:
 if 'mutual_state' not in st.session_state:
     st.session_state.mutual_state = None
 
-# section for title and description phase 1
+# section for title and description
 st.title("📊 Instagram Follower Insights")
 st.markdown("""
 Easily analyse your Instagram connections by uploading your exported **followers** and **following** data.
@@ -49,7 +49,6 @@ if upload_file_followers:
         if followers is None:
             st.error("❌ Could not read followers. Make sure the file is the correct Instagram export (usually named 'followers_1.json').")
         else: 
-            #st.write(followers)
             st.success("✅ Followers file loaded successfully.")
             FOLLOWER_UPLOADED = True
 
@@ -62,7 +61,6 @@ if upload_file_following:
         if following is None:
             st.error("❌ Could not read following data. Make sure the file is the correct Instagram export (usually named 'following.json').")
         else:
-            #st.write(following)
             st.success("✅ Following file loaded successfully.")
             FOLLOWING_UPLOADED = True
 
@@ -96,25 +94,7 @@ if st.session_state.analyse_button_state and st.session_state.mutual_state is no
     st.table(st.session_state.mutual_state)
     st.caption(f"Total: {len(st.session_state.mutual_state)}")
 
-    
-    # col1, col2 = st.columns(2)
 
-    # with col1:
-    #     st.subheader("You are not followed back")
-    #     st.write("You are not following back")
-    #     st.write("Mutuals")
-
-    # with col2:
-    #     st.write(st.session_state.non_follower_state)
-    #     st.write(f"total: {len(st.session_state.non_follower_state)}")
-    #     st.write(st.session_state.unrequited_followers_state)
-    #     st.write(f"total: {len(st.session_state.unrequited_followers_state)}")
-
-    #     st.write(st.session_state.mutual_state)
-    #     st.write(f"total: {len(st.session_state.mutual_state)}")
-    
-    
-    
     fig = vl.visualisation(
         st.session_state.mutual_state,
         st.session_state.non_follower_state,
@@ -151,9 +131,7 @@ if st.session_state.analyse_button_state and st.session_state.mutual_state is no
             st.error("Unable to save snapshot, try again later")
 
     snapshot_option_name = st.selectbox("Select snapshot", options=sm.list_snapshots(), index=None)
-    #st.write(snapshot_option_name)
     snapshot_follower = sm.load_follower_from_snapshot(snapshot_option_name)
-    #st.write(snapshot_follower)
     snapshot_following = sm.load_following_from_snapshot(snapshot_option_name)
 
     snapshot_data = anl.following_follower_analysis(snapshot_following, snapshot_follower)
