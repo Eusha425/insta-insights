@@ -10,7 +10,7 @@ A comprehensive Python application for analysing your Instagram follower relatio
 - **Mutual Followers**: Identify your mutual connections
 - **Visual Summaries**: Beautiful pie charts showing your follower breakdown
 
-### 📊 **Advanced Features**
+### ⚙️ **Advanced Features**
 - **Snapshot System**: Save and compare follower data over time
 - **Change Tracking**: Monitor follower gains/losses between snapshots
 - **Multiple Export Formats**: Export data as CSV or TXT files
@@ -75,9 +75,9 @@ To use this application, you need to download your Instagram data first:
 
 📖 **Official Instagram Guide**: [How to download your information](https://help.instagram.com/181231772500920)
 
-## 💻 Usage Guide
+## 🧭 Usage Guide
 
-### 🖥️ Web Interface (Streamlit)
+### 🌐 Web Interface (Streamlit)
 
 1. **Launch the app**
    ```bash
@@ -131,7 +131,7 @@ python cli.py --followers followers_1.json --following following.json --summaris
 python cli.py --help
 ```
 
-## 📊 Understanding Your Results
+## 🧠 Understanding Your Results
 
 ### Categories Explained
 
