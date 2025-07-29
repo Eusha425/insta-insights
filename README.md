@@ -220,7 +220,7 @@ pip install streamlit matplotlib pandas
 
 ## 📝 Licence
 
-This project is licenced under the MIT Licence - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## ⚠️ Disclaimer
 
