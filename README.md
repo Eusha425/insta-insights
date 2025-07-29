@@ -1,27 +1,27 @@
-# 📊 Instagram Follower Insights
+# Instagram Follower Insights
 
-A comprehensive Python application for analysing your Instagram follower relationships. Discover who follows you back, who doesn't, and track changes over time with beautiful visualisations and detailed reports.
+A comprehensive Python application for analysing your Instagram follower relationships. Discover who follows you back, who doesn't, and track changes over time with detailed visualisations and reports.
 
-## ✨ Features
+## Features
 
-### 🔍 **Core Analysis**
+### Core Analysis
 - **Non-Followers**: See who you follow but doesn't follow you back
 - **Unrequited Followers**: Find followers you haven't followed back
 - **Mutual Followers**: Identify your mutual connections
-- **Visual Summaries**: Beautiful pie charts showing your follower breakdown
+- **Visual Summaries**: Pie charts showing your follower breakdown
 
-### ⚙️ **Advanced Features**
+### Advanced Features
 - **Snapshot System**: Save and compare follower data over time
 - **Change Tracking**: Monitor follower gains/losses between snapshots
 - **Multiple Export Formats**: Export data as CSV or TXT files
 - **Dual Interface**: Both GUI (Streamlit) and CLI versions available
 
-### 🔒 **Privacy-First**
+### Privacy-First Design
 - **100% Local Processing**: All analysis happens on your device
 - **No Data Upload**: Your Instagram data never leaves your computer
 - **Secure**: No login required, works with Instagram's official data export
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Python 3.11 or higher
@@ -52,7 +52,7 @@ A comprehensive Python application for analysing your Instagram follower relatio
    python cli.py --followers followers_1.json --following following.json
    ```
 
-## 📱 Getting Your Instagram Data
+## Getting Your Instagram Data
 
 To use this application, you need to download your Instagram data first:
 
@@ -73,11 +73,11 @@ To use this application, you need to download your Instagram data first:
      - `followers_1.json` (or `followers.json`)
      - `following.json`
 
-📖 **Official Instagram Guide**: [How to download your information](https://help.instagram.com/181231772500920)
+**Official Instagram Guide**: [How to download your information](https://help.instagram.com/181231772500920)
 
-## 🧭 Usage Guide
+## Usage Guide
 
-### 🌐 Web Interface (Streamlit)
+### Web Interface (Streamlit)
 
 1. **Launch the app**
    ```bash
@@ -100,11 +100,9 @@ To use this application, you need to download your Instagram data first:
    - View detailed metrics and insights
 
 **Note:**
-* Snapshots are saved in the `snapshots/` folder.
-* Filenames include a timestamp (e.g. `snapshot_2025-07-29_12-30.json`) so you can distinguish them easily.
-* Snapshot comparison is shown directly in the Streamlit app when you select a previous snapshot from the dropdown.
+Snapshots are saved in the `snapshots/` folder with timestamps (e.g. `snapshot_2025-07-29_12-30.json`) for easy identification. Snapshot comparison is shown directly in the Streamlit app when you select a previous snapshot from the dropdown.
 
-### ⌨️ Command Line Interface
+### Command Line Interface
 
 **Basic analysis:**
 ```bash
@@ -131,31 +129,28 @@ python cli.py --followers followers_1.json --following following.json --summaris
 python cli.py --help
 ```
 
-## 🧠 Understanding Your Results
+## Understanding Your Results
 
 ### Categories Explained
 
-- **🙅‍♂️ Not Following You Back (One-sided)**
-  - People you follow who don't follow you back
-  - Consider unfollowing if you want a more balanced ratio
+- **Not Following You Back (One-sided)**
+  People you follow who don't follow you back. Consider unfollowing if you want a more balanced ratio.
 
-- **👀 You're Not Following Back (Unreciprocated)**
-  - Your followers that you haven't followed back
-  - Great for discovering potential connections
+- **You're Not Following Back (Unreciprocated)**
+  Your followers that you haven't followed back. Great for discovering potential connections.
 
-- **🤝 Mutual Followers (Following Each Other)**
-  - People who follow you and you follow back
-  - Your core Instagram community
+- **Mutual Followers (Following Each Other)**
+  People who follow you and you follow back. Your core Instagram community.
 
 ### Snapshot Comparison Features
 
-- **📈 New Followers**: 	People who started following you
-- **📉 Lost Followers**: 	People who unfollowed you
-- **🤝 Mutuals Gained**: 	New mutual connections
-- **💔 Mutuals Lost**: 		Lost mutual connections
-- **📶 Net Change**: 		Overall follower growth/decline
+- **New Followers**: People who started following you
+- **Lost Followers**: People who unfollowed you
+- **Mutuals Gained**: New mutual connections
+- **Mutuals Lost**: Lost mutual connections
+- **Net Change**: Overall follower growth/decline
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 instagram-follower-insights/
@@ -170,7 +165,7 @@ instagram-follower-insights/
 └── README.md               
 ```
 
-## 🔧 Technical Details
+## Technical Details
 
 ### File Format Requirements
 - Files must be in JSON format (Instagram's standard export format)
@@ -187,10 +182,10 @@ instagram-follower-insights/
 ### Data Processing
 1. JSON files are parsed to extract usernames
 2. Set operations identify relationships between lists
-3. Results are categorised and presented
+3. Results are categorized and presented
 4. Optional snapshot storage for temporal analysis
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Here's how you can help:
 
@@ -218,18 +213,18 @@ git clone https://github.com/Eusha425/insta-insights.git
 pip install streamlit matplotlib pandas
 ```
 
-## 📝 Licence
+## License
 
-This project is licenced under the MIT Licence - see the [LICENCE](LICENCE) file for details. lisence
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## ⚠️ Disclaimer
+## Disclaimer
 
 - This tool is for personal use only
 - Respect Instagram's Terms of Service
 - Your data privacy is maintained - no data is sent to external servers
 - Use responsibly and don't spam or harass other users
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -241,7 +236,7 @@ This project is licenced under the MIT Licence - see the [LICENCE](LICENCE) file
 - Verify both files are uploaded/specified
 - Check file permissions and paths
 - Ensure files aren't corrupted
-- Check that files exists in the same directory when running the cli version or navigate to the correct directory where it exists
+- Check that files exist in the same directory when running the CLI version or navigate to the correct directory
 
 **Missing visualisations:**
 - Install matplotlib: `pip install matplotlib`
@@ -256,19 +251,19 @@ This project is licenced under the MIT Licence - see the [LICENCE](LICENCE) file
    - Your operating system
    - Python version
 
-## 🎯 Roadmap
+## Roadmap
 
-- [ ] **Web Dashboard** deployment option
-- [ ] **Advanced Analytics** (engagement rates, growth trends)
-- [ ] **Multi-account Support**
-- [ ] **Batch Processing** for multiple data exports
-- [ ] **Enhanced Visualisations** (timeline charts, growth graphs)
+- [ ] Web Dashboard deployment option
+- [ ] Advanced Analytics (engagement rates, growth trends)
+- [ ] Multi-account Support
+- [ ] Batch Processing for multiple data exports
+- [ ] Enhanced Visualisations (timeline charts, growth graphs)
 
-## 👤 Author
+## Author
 
 **Eusha** - *Initial work*
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
 - Instagram for providing data export functionality
 - Streamlit team for the excellent web framework
@@ -276,6 +271,6 @@ This project is licenced under the MIT Licence - see the [LICENCE](LICENCE) file
 
 ---
 
-⭐ **If this project helped you, please give it a star!** ⭐
+If this project helped you, please give it a star!
 
-*Made with ❤️ for the Instagram community*
+*Made with care for the Instagram community*
