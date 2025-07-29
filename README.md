@@ -24,7 +24,7 @@ A comprehensive Python application for analysing your Instagram follower relatio
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.7 or higher
+- Python 3.11 or higher
 - Your Instagram data export (see [Getting Your Data](#-getting-your-instagram-data) below)
 
 ### Installation
@@ -98,6 +98,11 @@ To use this application, you need to download your Instagram data first:
    - Save snapshots for future comparison
    - Compare with previous snapshots to track changes
    - View detailed metrics and insights
+
+**Note:**
+* Snapshots are saved in the `snapshots/` folder.
+* Filenames include a timestamp (e.g. `snapshot_2025-07-29_12-30.json`) so you can distinguish them easily.
+* Snapshot comparison is shown directly in the Streamlit app when you select a previous snapshot from the dropdown.
 
 ### ⌨️ Command Line Interface
 
@@ -211,9 +216,6 @@ git clone https://github.com/Eusha425/insta-insights.git
 
 # Install development dependencies
 pip install streamlit matplotlib pandas
-
-# Run tests (if available)
-python -m pytest tests/
 ```
 
 ## 📝 Licence
@@ -234,12 +236,12 @@ This project is licenced under the MIT Licence - see the [LICENCE](LICENCE) file
 **"Invalid JSON file format" error:**
 - Ensure you downloaded the correct files from Instagram
 - Make sure files are in JSON format, not HTML
-- Check that file names match exactly: `followers_1.json` and `following.json`
 
 **"Files could not be properly analysed" error:**
 - Verify both files are uploaded/specified
 - Check file permissions and paths
 - Ensure files aren't corrupted
+- Check that files exists in the same directory when running the cli version or navigate to the correct directory where it exists
 
 **Missing visualisations:**
 - Install matplotlib: `pip install matplotlib`
