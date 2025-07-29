@@ -218,7 +218,7 @@ git clone https://github.com/Eusha425/insta-insights.git
 pip install streamlit matplotlib pandas
 ```
 
-## 📝 Licence
+## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
