@@ -1,13 +1,6 @@
 # Instagram Follower Insights
 
-Keeping a track of instagram followers and following can be tricky, this project provides a comprehensive tool for analysing your Instagram follower relationships. Discover who follows you back, who doesn't, and track changes over time with detailed visualisations and reports locally with no sign in required.
-
-# Table of Content
-- [Features][##features}
-- [Installation](##quick start)
-- [Getting your data](## Getting Your Instagram Data)
-- [Usage](##usage guide)
-- 
+Keeping a track of instagram followers and following can be tricky, this project provides a comprehensive tool for analysing your Instagram follower relationships. Discover who follows you back, who doesn't, and track changes over time with detailed visualisations and reports locally with no sign in required. 
 
 ## Features
 
