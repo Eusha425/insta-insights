@@ -1,6 +1,39 @@
-# Instagram Follower Insights
+<p align="center" style="margin-bottom:0;">
+  <img src="assets/insta_insights_gradient.png" width="750px" alt="Insta Insights" />
+</p>
 
-A comprehensive Python application for analysing your Instagram follower relationships. Discover who follows you back, who doesn't, and track changes over time with detailed visualisations and reports.
+Keeping a track of instagram followers and following can be tricky, ***insta insights*** is an open source comprehensive tool for analysing your Instagram follower relationships. Discover who follows you back, who doesn't, and track changes over time with detailed visualisations and reports locally with no sign in required. 
+
+<p align="">
+  <!-- Tech stack -->
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" />
+  <img src="https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=plotly&logoColor=white" />
+  <img src="https://img.shields.io/badge/CLI-Argparse-4B8BBE?style=for-the-badge&logo=gnubash&logoColor=white" />
+  <img src="https://img.shields.io/badge/Instagram%20Data-833AB4?style=for-the-badge&logo=instagram&logoColor=white" />
+
+  <!-- Project meta -->
+  <img src="https://img.shields.io/github/v/release/Eusha425/insta-insights?style=for-the-badge" />
+  <img src="https://img.shields.io/github/license/Eusha425/insta-insights?style=for-the-badge" />
+  <!-- <img src="https://img.shields.io/github/stars/Eusha425/insta-insights?style=for-the-badge" /> -->
+  <!-- <img src="https://img.shields.io/github/issues/Eusha425/insta-insights?style=for-the-badge" /> -->
+</p>
+
+## Table of Contents
+- [Features](#features)
+- [Quick Start](#quick-start)
+- [Getting Your Instagram Data](#getting-your-instagram-data)
+- [Usage Guide](#usage-guide)
+- [Understanding Your Results](#understanding-your-results)
+- [Project Structure](#project-structure)
+- [Technical Details](#technical-details)
+- [Contributing](#contributing)
+- [License](#license)
+- [Disclaimer](#disclaimer)
+- [Troubleshooting](#troubleshooting)
+- [Roadmap](#roadmap)
+- [Acknowledgements](#acknowledgements)
+- [Live Demo](#live-demo)
 
 ## Features
 
@@ -259,18 +292,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [ ] Batch Processing for multiple data exports
 - [ ] Enhanced Visualisations (timeline charts, growth graphs)
 
-## Author
-
-**Eusha** 
-
 ## Acknowledgements
 
 - Instagram for providing data export functionality
 - Streamlit team for the excellent web framework
 - Python community for amazing libraries
 
----
-
-If this project helped you, please give it a star!
-
-*Made with care for the Instagram community*
+## Live Demo
+Check out the live demo [here](https://insta-insights.streamlit.app/)
