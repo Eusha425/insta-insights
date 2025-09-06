@@ -259,18 +259,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [ ] Batch Processing for multiple data exports
 - [ ] Enhanced Visualisations (timeline charts, growth graphs)
 
-## Author
-
-**Eusha** 
-
 ## Acknowledgements
 
 - Instagram for providing data export functionality
 - Streamlit team for the excellent web framework
 - Python community for amazing libraries
-
----
-
-If this project helped you, please give it a star!
-
-*Made with care for the Instagram community*
