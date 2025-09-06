@@ -1,6 +1,6 @@
 # Instagram Follower Insights
 
-A comprehensive Python application for analysing your Instagram follower relationships. Discover who follows you back, who doesn't, and track changes over time with detailed visualisations and reports.
+Keeping a track of instagram followers and following can be tricky, this project provides a comprehensive tool for analysing your Instagram follower relationships. Discover who follows you back, who doesn't, and track changes over time with detailed visualisations and reports locally with no sign in required. 
 
 ## Features
 
@@ -259,18 +259,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [ ] Batch Processing for multiple data exports
 - [ ] Enhanced Visualisations (timeline charts, growth graphs)
 
-## Author
-
-**Eusha** 
-
 ## Acknowledgements
 
 - Instagram for providing data export functionality
 - Streamlit team for the excellent web framework
 - Python community for amazing libraries
-
----
-
-If this project helped you, please give it a star!
-
-*Made with care for the Instagram community*
