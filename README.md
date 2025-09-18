@@ -1,5 +1,5 @@
 <p align="center" style="margin-bottom:0;">
-  <img src="assets/insta_insights_gradient.png" width="600px" alt="Insta Insights" />
+  <img src="assets/insta_insights_gradient.svg" width="600px" alt="Insta Insights" />
 </p>
 
 Keeping a track of instagram followers and following can be tricky, ***insta insights*** is an open source comprehensive tool for analysing your Instagram follower relationships. Discover who follows you back, who doesn't, and track changes over time with detailed visualisations and reports locally with no sign in required. 
