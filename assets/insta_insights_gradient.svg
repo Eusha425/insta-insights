@@ -8,14 +8,10 @@
       <stop offset="100%" stop-color="#515BD4"/>
     </linearGradient>
   </defs>
-<<<<<<< HEAD
-  <text x="50%" y="25%" dominant-baseline="middle" text-anchor="middle" font-family="Segoe UI, Roboto, 'Helvetica Neue', Arial" font-size="74" font-weight="700" fill="url(#igGrad)"> Insta Insights </text>
-=======
 
   <text x="50%" y="25%" dominant-baseline="middle" text-anchor="middle"
         font-family="Segoe UI, Roboto, 'Helvetica Neue', Arial" font-size="64" font-weight="700"
         fill="url(#igGrad)">
     Insta Insights
   </text>
->>>>>>> parent of 68a5b76 (Update insta_insights_gradient.svg)
 </svg>
