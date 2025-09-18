@@ -9,8 +9,6 @@
     </linearGradient>
   </defs>
 
-  <rect width="70%" height="70%" fill="none" />
-
   <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
         font-family="Segoe UI, Roboto, 'Helvetica Neue', Arial" font-size="56" font-weight="700"
         fill="url(#igGrad)">
