@@ -1,7 +1,21 @@
 # Instagram Follower Insights
 
-Keeping a track of instagram followers and following can be tricky, this project provides a comprehensive tool for analysing your Instagram follower relationships. Discover who follows you back, who doesn't, and track changes over time with detailed visualisations and reports locally with no sign in required. 
+Keeping a track of instagram followers and following can be tricky, ***insta insights*** is an open source comprehensive tool for analysing your Instagram follower relationships. Discover who follows you back, who doesn't, and track changes over time with detailed visualisations and reports locally with no sign in required. 
 
+<p align="center">
+  <!-- Tech stack -->
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" />
+  <img src="https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=plotly&logoColor=white" />
+  <img src="https://img.shields.io/badge/CLI-Argparse-4B8BBE?style=for-the-badge&logo=gnubash&logoColor=white" />
+  <img src="https://img.shields.io/badge/Instagram%20Data-833AB4?style=for-the-badge&logo=instagram&logoColor=white" />
+
+  <!-- Project meta -->
+  <img src="https://img.shields.io/github/v/release/Eusha425/insta-insights?style=for-the-badge" />
+  <img src="https://img.shields.io/github/license/Eusha425/insta-insights?style=for-the-badge" />
+  <!-- <img src="https://img.shields.io/github/stars/Eusha425/insta-insights?style=for-the-badge" /> -->
+  <!-- <img src="https://img.shields.io/github/issues/Eusha425/insta-insights?style=for-the-badge" /> -->
+</p>
 
 ## Table of Contents
 - [Features](#features)
