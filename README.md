@@ -1,4 +1,4 @@
-<p align="center">
+<p align="center" style="margin-top:0;">
   <img src="assets/insta_insights_gradient.svg" padding-bottom: 0 margin-bottom: 0 alt="Insta Insights" />
 </p>
 
