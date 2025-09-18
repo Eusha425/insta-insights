@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Insta Insights">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="250" viewBox="0 0 800 200" role="img" aria-label="Insta Insights">
   <defs>
     <linearGradient id="igGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#F58529"/>
@@ -7,11 +8,5 @@
       <stop offset="100%" stop-color="#515BD4"/>
     </linearGradient>
   </defs>
-
-  <text x="0" y="0.8em"
-        font-family="Segoe UI, Roboto, 'Helvetica Neue', Arial" 
-        font-size="74" font-weight="700"
-        fill="url(#igGrad)">
-    Insta Insights
-  </text>
+  <text x="50%" y="25%" dominant-baseline="middle" text-anchor="middle" font-family="Segoe UI, Roboto, 'Helvetica Neue', Arial" font-size="74" font-weight="700" fill="url(#igGrad)"> Insta Insights </text>
 </svg>
