@@ -4,7 +4,7 @@
 
 Keeping a track of instagram followers and following can be tricky, ***insta insights*** is an open source comprehensive tool for analysing your Instagram follower relationships. Discover who follows you back, who doesn't, and track changes over time with detailed visualisations and reports locally with no sign in required. 
 
-<p align="center">
+<p align="">
   <!-- Tech stack -->
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
   <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" />
