@@ -2,6 +2,23 @@
 
 Keeping a track of instagram followers and following can be tricky, this project provides a comprehensive tool for analysing your Instagram follower relationships. Discover who follows you back, who doesn't, and track changes over time with detailed visualisations and reports locally with no sign in required. 
 
+
+## Table of Contents
+- [Features](#features)
+- [Quick Start](#quick-start)
+- [Getting Your Instagram Data](#getting-your-instagram-data)
+- [Usage Guide](#usage-guide)
+- [Understanding Your Results](#understanding-your-results)
+- [Project Structure](#project-structure)
+- [Technical Details](#technical-details)
+- [Contributing](#contributing)
+- [License](#license)
+- [Disclaimer](#disclaimer)
+- [Troubleshooting](#troubleshooting)
+- [Roadmap](#roadmap)
+- [Acknowledgements](#acknowledgements)
+- [Live Demo](#live-demo)
+
 ## Features
 
 ### Core Analysis
@@ -264,3 +281,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Instagram for providing data export functionality
 - Streamlit team for the excellent web framework
 - Python community for amazing libraries
+
+## Live Demo
+Check out the live demo [here](https://insta-insights.streamlit.app/)
