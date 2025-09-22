@@ -12,6 +12,6 @@ jobs:
       - name: Curl Streamlit App with Logging
         run: |
           echo "Sending request to Streamlit app..."
-          curl -s -L -w "HTTP Status: %{http_code}\n" https://insta-insights.streamlit.app/ -o response.txt
+          curl -s -L -w "HTTP Status: %{http_code}\n" https://insta-insights.streamlit.app/ -o response.txt || echo "Curl completed with non-zero exit code"
           echo "Response Body:"
           cat response.txt
