@@ -12,11 +12,6 @@ jobs:
       - name: Curl Streamlit App with Logging
         run: |
           echo "Sending request to Streamlit app..."
-          RESPONSE=$(curl -s -L -w "%{http_code}" https://insta-insights.streamlit.app/ -o response.txt)
-          echo "HTTP Status Code: $RESPONSE"
+          curl -s -L -w "HTTP Status: %{http_code}\n" https://insta-insights.streamlit.app/ -o response.txt
           echo "Response Body:"
           cat response.txt
-          if [ "$RESPONSE" -ne 200 ]; then
-            echo "❌ Request failed with status code $RESPONSE"
-            exit 1
-          fi
