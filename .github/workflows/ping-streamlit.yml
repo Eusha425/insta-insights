@@ -10,4 +10,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send request to MyStreamlitApp
-        run: curl -s -o /dev/null -w "%{http_code}\n" https://insta-insights.streamlit.app/
+        run: |
+          wget -qO- "https://insta-insights.streamlit.app/?ping=$(date +%s)" > /dev/null
