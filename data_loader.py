@@ -35,8 +35,12 @@ def find_following(file_or_path):
         following_data = following_data['relationships_following']
         following_name = list()
 
-        for i in range( len(following_data)):
-            following_name.append(following_data[i]['string_list_data'][0]['value'])
+        """ for i in range( len(following_data)):
+            following_name.append(following_data[i]['string_list_data'][0]['value']) """
+        
+        # new following data json structure
+        for i in range (len(following_data)):
+            following_name.append(following_data[i]['title'])
 
         return following_name
     except:
