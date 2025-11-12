@@ -292,11 +292,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [ ] Batch Processing for multiple data exports
 - [ ] Enhanced Visualisations (timeline charts, growth graphs)
 
-## Acknowledgements
-
-- Instagram for providing data export functionality
-- Streamlit team for the excellent web framework
-- Python community for amazing libraries
 
 ## Live Demo
 Check out the live demo [here](https://insta-insights.streamlit.app/)
