@@ -4,21 +4,27 @@ import analyser as anl
 import visualiser as vl
 import exporter as ex
 import snapshot_manager as sm
+import deactivate_manager as dm
 
-FOLLOWING_UPLOADED = False
-FOLLOWER_UPLOADED = False
 
 # session state to retain analysis results after script reruns 
 # (e.g., when the download button is clicked), so that the data 
 # and interface do not reset to their default state.
 if 'analyse_button_state' not in st.session_state:
     st.session_state.analyse_button_state = False
+if 'remove_deactive_button_state' not in st.session_state:
+    st.session_state.remove_deactive_button_state = False
 if 'non_follower_state' not in st.session_state:
     st.session_state.non_follower_state = None
 if 'unrequited_followers_state' not in st.session_state:
     st.session_state.unrequited_followers_state = None
 if 'mutual_state' not in st.session_state:
     st.session_state.mutual_state = None
+if 'FOLLOWER_UPLOADED' not in st.session_state:
+    st.session_state.FOLLOWER_UPLOADED = False
+if 'FOLLOWING_UPLOADED' not in st.session_state:
+    st.session_state.FOLLOWING_UPLOADED = False
+
 
 # section for title and description
 st.title("📊 Instagram Follower Insights")
@@ -41,16 +47,14 @@ upload_file_followers = st.file_uploader("Upload the followers file: ")
 
 if upload_file_followers:
     if '.json' not in upload_file_followers.name:
-        st.error("Please upload a JSON file")
-        
-        
+        st.error("Please upload a JSON file") 
     else:
         followers = dl.find_followers(upload_file_followers)
         if followers is None:
             st.error("❌ Could not read followers. Make sure the file is the correct Instagram export (usually named 'followers_1.json').")
         else: 
             st.success("✅ Followers file loaded successfully.")
-            FOLLOWER_UPLOADED = True
+            st.session_state.FOLLOWER_UPLOADED = True
 
 upload_file_following = st.file_uploader("Upload the following file: ")
 if upload_file_following:
@@ -62,7 +66,7 @@ if upload_file_following:
             st.error("❌ Could not read following data. Make sure the file is the correct Instagram export (usually named 'following.json').")
         else:
             st.success("✅ Following file loaded successfully.")
-            FOLLOWING_UPLOADED = True
+            st.session_state.FOLLOWING_UPLOADED = True
 
 st.sidebar.markdown("### 📱 Follower Insights")
 st.sidebar.info("Built with ❤️ using Streamlit.\n\nCreated by Eusha.")
@@ -70,7 +74,7 @@ st.sidebar.info("Built with ❤️ using Streamlit.\n\nCreated by Eusha.")
 analyse_button = st.button("Analyse data")
 
 if analyse_button:
-    if FOLLOWER_UPLOADED == True and FOLLOWING_UPLOADED == True:
+    if st.session_state.FOLLOWER_UPLOADED and st.session_state.FOLLOWING_UPLOADED:
         with st.spinner("Analysing..."):
             non_followers, unrequited_followers, mutual = anl.following_follower_analysis(following, followers)
             st.session_state.non_follower_state = non_followers
@@ -93,6 +97,38 @@ if st.session_state.analyse_button_state and st.session_state.mutual_state is no
     st.subheader("🤝 Mutual Followers (Following Each Other)")
     st.table(st.session_state.mutual_state)
     st.caption(f"Total: {len(st.session_state.mutual_state)}")
+
+    st.subheader("👻 Remove Deactivated Accounts")
+
+    with st.container():
+        st.markdown(
+            "<p style='font-size:16px;'>"
+            "Enter names of deactivated accounts below (one per line), "
+            "or upload a text file containing the list."
+            "</p>",
+            unsafe_allow_html=True
+        )
+
+        col1, col2 = st.columns([2, 1])
+        with col1:
+            deactivated_accounts = st.text_area(
+                "Enter manually",
+                placeholder="e.g.\nAlice\nBob\nCharlie",
+                height=150
+            )
+        with col2:
+            upload_deactive_file = st.file_uploader("Upload list file (.txt)", type=["txt"])
+
+    st.markdown("")  # light spacing
+
+    remove_deactive_button = st.button("Remove deactive accounts")
+    if remove_deactive_button:
+        if upload_deactive_file:
+            st.session_state.non_follower_state = dm.remove_deactive(st.session_state.non_follower_state, dm.extract_names_from_file(upload_deactive_file))
+
+        st.session_state.non_follower_state = dm.remove_deactive(st.session_state.non_follower_state, deactivated_accounts)
+        st.session_state.unrequited_followers_state = dm.remove_deactive(st.session_state.unrequited_followers_state, deactivated_accounts)
+        st.rerun()
 
 
     fig = vl.visualisation(
@@ -176,5 +212,3 @@ if st.session_state.analyse_button_state and st.session_state.mutual_state is no
                     st.warning("You lost more followers than you gained. Consider reviewing your content strategy. 😕")
                 else:
                     st.info("Your follower count is stable.")
-
-
