@@ -125,9 +125,12 @@ if st.session_state.analyse_button_state and st.session_state.mutual_state is no
     if remove_deactive_button:
         if upload_deactive_file:
             st.session_state.non_follower_state = dm.remove_deactive(st.session_state.non_follower_state, dm.extract_names_from_file(upload_deactive_file))
-
-        st.session_state.non_follower_state = dm.remove_deactive(st.session_state.non_follower_state, deactivated_accounts)
-        st.session_state.unrequited_followers_state = dm.remove_deactive(st.session_state.unrequited_followers_state, deactivated_accounts)
+            st.session_state.unrequited_followers_state = dm.remove_deactive(st.session_state.unrequited_followers_state, dm.extract_names_from_file(upload_deactive_file))
+            
+        else:
+            st.session_state.non_follower_state = dm.remove_deactive(st.session_state.non_follower_state, deactivated_accounts)
+            st.session_state.unrequited_followers_state = dm.remove_deactive(st.session_state.unrequited_followers_state, deactivated_accounts)
+        
         st.rerun()
 
 

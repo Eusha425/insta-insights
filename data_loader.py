@@ -3,7 +3,7 @@ import json
 def find_followers(file_or_path):
     # error checking to see correct file format
     try:
-        if isinstance(file_or_path, str): # to check the type of parametre passed, expect string when using CLI expect file object when running GUI
+        if isinstance(file_or_path, str): # to check the type of parameter passed, expect string when using CLI expect file object when running GUI
             with open(file_or_path) as follower_file:
                 follower_data = json.load(follower_file)
         else:
@@ -24,7 +24,7 @@ def find_followers(file_or_path):
 def find_following(file_or_path):
     # error checking to see correct file format
     try:
-        # to check the type of parametre passed, expect string when using CLI expect file object when running GUI
+        # to check the type of parameter passed, expect string when using CLI expect file object when running GUI
         if isinstance(file_or_path, str):
 
             with open(file_or_path) as following_file:
