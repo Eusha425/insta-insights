@@ -12,8 +12,6 @@ import deactivate_manager as dm
 # and interface do not reset to their default state.
 if 'analyse_button_state' not in st.session_state:
     st.session_state.analyse_button_state = False
-if 'remove_deactive_button_state' not in st.session_state:
-    st.session_state.remove_deactive_button_state = False
 if 'non_follower_state' not in st.session_state:
     st.session_state.non_follower_state = None
 if 'unrequited_followers_state' not in st.session_state:
@@ -121,15 +119,15 @@ if st.session_state.analyse_button_state and st.session_state.mutual_state is no
 
     st.markdown("")  # light spacing
 
-    remove_deactive_button = st.button("Remove deactive accounts")
-    if remove_deactive_button:
+    remove_deactivated_button = st.button("Remove deactive accounts")
+    if remove_deactivated_button:
         if upload_deactive_file:
-            st.session_state.non_follower_state = dm.remove_deactive(st.session_state.non_follower_state, dm.extract_names_from_file(upload_deactive_file))
-            st.session_state.unrequited_followers_state = dm.remove_deactive(st.session_state.unrequited_followers_state, dm.extract_names_from_file(upload_deactive_file))
+            st.session_state.non_follower_state = dm.remove_deactivated_accounts(st.session_state.non_follower_state, dm.extract_names_from_file(upload_deactive_file))
+            st.session_state.unrequited_followers_state = dm.remove_deactivated_accounts(st.session_state.unrequited_followers_state, dm.extract_names_from_file(upload_deactive_file))
             
         else:
-            st.session_state.non_follower_state = dm.remove_deactive(st.session_state.non_follower_state, deactivated_accounts)
-            st.session_state.unrequited_followers_state = dm.remove_deactive(st.session_state.unrequited_followers_state, deactivated_accounts)
+            st.session_state.non_follower_state = dm.remove_deactivated_accounts(st.session_state.non_follower_state, deactivated_accounts)
+            st.session_state.unrequited_followers_state = dm.remove_deactivated_accounts(st.session_state.unrequited_followers_state, deactivated_accounts)
         
         st.rerun()
 

@@ -7,7 +7,7 @@ def format_data(usernames : str):
     return list_of_names
 
 
-def remove_deactive(account_list : list, deactivated_list : str):
+def remove_deactivated_accounts(account_list : list, deactivated_list : str):
     
     deactivated_list = format_data(deactivated_list)
     filtered_list = list()
@@ -16,12 +16,12 @@ def remove_deactive(account_list : list, deactivated_list : str):
         if account_list[i] not in deactivated_list:
             filtered_list.append(account_list[i])
 
-    store_deactive_account_names(deactivated_list)
+    store_deactivated_account_names(deactivated_list)
 
     return filtered_list
 
 
-def store_deactive_account_names(account_list : list):
+def store_deactivated_account_names(account_list : list):
 
     with open("account.txt", "a") as file_writer:
         for i in range(len(account_list)):
@@ -49,7 +49,7 @@ def extract_names_from_file(file_or_path):
 
 
 def main():
-    print("This is the deactive account manager module")
+    print("This is the deactivated account manager module")
 
 if __name__ == "__main__":
     main()
