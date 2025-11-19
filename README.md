@@ -13,7 +13,7 @@ Keeping a track of instagram followers and following can be tricky, ***insta ins
   <img src="https://img.shields.io/badge/Instagram%20Data-833AB4?style=for-the-badge&logo=instagram&logoColor=white" />
 
   <!-- Project meta -->
-  <img src="https://img.shields.io/github/v/release/Eusha425/insta-insights?style=for-the-badge" />
+  <img src="https://img.shields.io/github/v/release/Eusha425/insta-insights?display_name=tag&sort=semver&style=for-the-badge" alt="GitHub release (latest by semver)">
   <img src="https://img.shields.io/github/license/Eusha425/insta-insights?style=for-the-badge" />
   <!-- <img src="https://img.shields.io/github/stars/Eusha425/insta-insights?style=for-the-badge" /> -->
   <!-- <img src="https://img.shields.io/github/issues/Eusha425/insta-insights?style=for-the-badge" /> -->
@@ -292,11 +292,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [ ] Batch Processing for multiple data exports
 - [ ] Enhanced Visualisations (timeline charts, growth graphs)
 
-## Acknowledgements
-
-- Instagram for providing data export functionality
-- Streamlit team for the excellent web framework
-- Python community for amazing libraries
 
 ## Live Demo
 Check out the live demo [here](https://insta-insights.streamlit.app/)
