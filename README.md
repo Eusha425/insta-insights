@@ -31,7 +31,6 @@ Keeping a track of instagram followers and following can be tricky, ***insta ins
 - [License](#license)
 - [Disclaimer](#disclaimer)
 - [Troubleshooting](#troubleshooting)
-- [Roadmap](#roadmap)
 - [Live Demo](#live-demo)
 
 ## Features
@@ -281,15 +280,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
    - Steps to reproduce
    - Your operating system
    - Python version
-
-## Roadmap
-
-- [ ] Web Dashboard deployment option
-- [ ] Advanced Analytics (engagement rates, growth trends)
-- [ ] Multi-account Support
-- [ ] Batch Processing for multiple data exports
-- [ ] Enhanced Visualisations (timeline charts, growth graphs)
-
 
 ## Live Demo
 Check out the live demo [here](https://insta-insights.streamlit.app/)
