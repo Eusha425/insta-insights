@@ -32,7 +32,6 @@ Keeping a track of instagram followers and following can be tricky, ***insta ins
 - [Disclaimer](#disclaimer)
 - [Troubleshooting](#troubleshooting)
 - [Roadmap](#roadmap)
-- [Acknowledgements](#acknowledgements)
 - [Live Demo](#live-demo)
 
 ## Features
