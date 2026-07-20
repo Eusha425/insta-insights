@@ -91,13 +91,12 @@ To use this application, you need to download your Instagram data first:
 
 1. **Access Instagram Settings**
    - Open Instagram app or go to instagram.com
-   - Go to Settings → Privacy and Security → Data Download
+   - Go to Settings → Accounts Center → Data Download → Your information and permissions → Export your information
 
 2. **Request Your Data**
-   - Click "Request Download"
+   - Click "Create Export"
    - Select "JSON" format (important!)
    - Choose date range (recommend "All time" for complete analysis)
-   - Enter your email and click "Next"
 
 3. **Download and Extract**
    - Instagram will email you a download link (usually within 48 hours)
